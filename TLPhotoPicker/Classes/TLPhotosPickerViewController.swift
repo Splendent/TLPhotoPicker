@@ -61,7 +61,12 @@ public struct TLPhotosPickerConfigure {
 public struct Platform {
     
     static var isSimulator: Bool {
-        return targetEnvironment(simulator) //thanks, xcode 16.3 won't import TargetConditionals.h anymore
+        //thanks, xcode 16.3 won't import TargetConditionals.h anymore
+#if targetEnvironment(simulator)
+        return true
+#else
+        return false
+#endif
     }
     
 }
